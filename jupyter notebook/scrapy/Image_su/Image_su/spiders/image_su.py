@@ -21,14 +21,15 @@ class ImageSuSpider(CrawlSpider):
 
     def parse_item(self, response):
         i=ImageSuItem()
-        i['image_temp']=response.xpath('//div[@class="images"]/div[@id="jg"]//a/@href').extract()
-        '''i['sentence']=response.xpath('//div[@class="show"]/div[@class="article"]/h1[@class="title"]/text()').extract()
-        i['time']=response.xpath('//div[@class="show"]/div[@class="article"]/div[@class="stuff"]/span[1]/text()').extract()
-        i['read_num']=response.xpath('//div[@class="show"]/div[@class="article"]/span[2]/text()').extract()
-        i['word']=response.xpath('//div[@class="show"]/div[@class="article"]/span[3]/text()').extract()
-        i['comment']=response.xpath('//div[@class="show"]/div[@class="article"]/span[4]/text()').extract()
-        i['like']=response.xpath('//*[@id="single"]/div[2]/div[2]/div/div[1]/span[5]/text()').extract()
+        i['image_url']=response.url
+        #i['image_url']=response.xpath('//div[@class="images"]/div[@id="jg"]//a/@href').extract()
+        i['sentence']=response.xpath('//*[@id="single"]/div[2]/div[2]/div/h1/text()').extract()
+        i['time']=response.xpath('//*[@id="single"]/div[2]/div[2]/div/div[1]/span[1]/text()').extract()
+        i['read_num']=response.xpath('//*[@id="single"]/div[2]/div[2]/div/div[1]/span[2]/text()').extract()[0].split(' ')[1]
+        i['word']=response.xpath('//*[@id="single"]/div[2]/div[2]/div/div[1]/span[3]/text()').extract()[0].split(' ')[1]
+        i['comment']=response.xpath('//*[@id="single"]/div[2]/div[2]/div/div[1]/span[4]/text()').extract()[0].split(' ')[1]
+        i['likee']=response.xpath('//*[@class="likeThis"]/span[2]/text()')[0].extract()
         #i['domain_id'] = response.xpath('//input[@id="sid"]/@value').extract()
         #i['name'] = response.xpath('//div[@id="name"]').extract()
-        #i['description'] = response.xpath('//div[@id="description"]').extract()'''
+        #i['description'] = response.xpath('//div[@id="description"]').extract()
         return i

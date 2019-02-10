@@ -12,10 +12,9 @@ class ImageSuPipeline(object):
         self.cur = self.conn.cursor()
 
     def process_item(self, item, spider):
-        for i in item['image_temp']:
-            self.cur.execute("INSERT INTO image_suu (image_url) VALUES (%s)", i)
-            self.conn.commit()
-            print(item['image_temp'])
+
+        self.cur.execute("INSERT INTO image_suuz (sentence,image_url,time,word,comment,likee,read_num) VALUES (%s,%s,%s,%s,%s,%s,%s)", (item['sentence'],item['image_url'],item['time'],item['word'],item['comment'],item['likee'],item['read_num']))
+        self.conn.commit()
         return item
 
     def close_spider(self, spider):

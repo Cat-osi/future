@@ -11,11 +11,11 @@ import scrapy
 class ImageSuItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    image_temp=scrapy.Field()
+    image_url=scrapy.Field()
     sentence=scrapy.Field()
     time=scrapy.Field()
     read_num=scrapy.Field()
     word=scrapy.Field()
     comment=scrapy.Field()
-    like=scrapy.Field()
+    likee=scrapy.Field()
     pass
