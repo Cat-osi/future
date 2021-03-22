@@ -12,6 +12,8 @@ def get_head():
             imgFile.write(img)
             imgFile.close()
 
+
+dddd
 def getSex():
     itchat.login()
     friends = itchat.get_friends(update=True)
